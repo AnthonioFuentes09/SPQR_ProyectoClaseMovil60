@@ -22,8 +22,44 @@ export default function App() {
     alert("Button was reset!");
   }
 
+  const handleOnLogin = () => {
+    console.log("prueba login desde app");
+    alert("Alerta login desde app");
+  }
+  
+  const handleOnLogout = () => {
+    alert("Alerta logout desde app");
+  }
+
+  const handleOnRestorePassword = () => {
+    alert("Alerta restore password desde app");
+  }
+
   return (
     <View style={styles.container}>
+      <View style={styles.card}>
+        <Text>Inicio de Sesion</Text>
+        <StatusBar style="auto" />
+        <View style={styles.buttonsWrapper}>
+          <CustomButton 
+              title={'Login'} 
+              onClick={handleOnLogin} />
+          <CustomButton 
+              title={'Salir'}
+              onClick={handleOnLogout}
+              variant={'secondary'} />
+          <CustomButton 
+              title={'Restaurar Contraseña'}
+              onClick={handleOnRestorePassword}
+              variant={'terciary'} />
+        </View>
+      </View>
+    </View>
+  );
+}
+
+/*
+  <View style={styles.container}>
       <Text>Open up App.tsx to start workin2g on your app!</Text>
       <StatusBar style="auto" />
       <View style={buttonRowStyle.buttonRow}>
@@ -33,8 +69,7 @@ export default function App() {
       </View>
       <Text>{newTitle}</Text>
     </View>
-  );
-}
+*/
 
 const buttonRowStyle = StyleSheet.create({
   buttonRow: {
@@ -48,8 +83,20 @@ const buttonRowStyle = StyleSheet.create({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  card: {
+    width: "80%",
+    height: "80%",
+    borderRadius:15,
+    backgroundColor: '#f3f4f6',
+  },
+  buttonsWrapper: {
+    backgroundColor: "#e5e7eb",
+    marginTop: 15,
+    height: "30%",
+    alignItems: "center",
+    justifyContent: "space-around",
   },
 });
