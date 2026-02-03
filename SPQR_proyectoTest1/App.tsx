@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import CustomButton from './src/components/CustomButtom';
 import { useState } from 'react';
+import CustomInput from './src/components/CustomInput';
 
 
 export default function App() {
@@ -39,6 +40,14 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.card}>
         <Text>Inicio de Sesion</Text>
+        <CustomInput 
+            placeholder={"Correo Electronico"}
+            type={"email-address"} />
+        <CustomInput
+            placeholder={"Contraseña"}
+            type={"password"} />
+       
+
         <StatusBar style="auto" />
         <View style={styles.buttonsWrapper}>
           <CustomButton 

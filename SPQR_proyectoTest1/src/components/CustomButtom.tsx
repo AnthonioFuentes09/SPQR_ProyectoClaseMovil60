@@ -37,8 +37,7 @@ const getStyles = (variant: ButtonVariant) =>
         paddingVertical: 15,
         alignItems: 'center',
         width: "80%",
-        backgroundColor: 
-            getBgColorByVariant(variant),
+        backgroundColor: getBgColorByVariant(variant),
         borderRadius: 8,
         borderWidth: 1,
         borderColor: "#f3f4f6",
@@ -60,6 +59,7 @@ const getBgColorByVariant = (variant: ButtonVariant) => {
             return "#f3f4f6";
     }
 }
+
 
 const getColorByVariant = (variant: ButtonVariant) => {
     switch(variant){
