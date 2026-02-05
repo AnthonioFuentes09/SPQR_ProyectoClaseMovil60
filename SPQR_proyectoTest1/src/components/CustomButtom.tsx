@@ -17,14 +17,16 @@ interface CustomButtonProps {
 export default function CustomButton({title, onClick, variant = "primary"} : CustomButtonProps){
     const styles = getStyles(variant);
     return(
-        <TouchableOpacity
-            onPress={onClick}
-            style={styles.container}>
-                <Text
-                style={styles.text}>
-                    {title}
-                </Text>
-        </TouchableOpacity>  
+        <View style={styles.wrapper}>
+            <TouchableOpacity
+                onPress={onClick}
+                style={styles.container}>
+                    <Text
+                    style={styles.text}>
+                        {title}
+                    </Text>
+            </TouchableOpacity>  
+        </View>
     );
 
     
@@ -33,10 +35,15 @@ export default function CustomButton({title, onClick, variant = "primary"} : Cus
 
 const getStyles = (variant: ButtonVariant) => 
     StyleSheet.create({
+    wrapper: {
+        padding: 5,
+        width: "100%",
+    },
     container: {
-        paddingVertical: 15,
+         paddingVertical: 15,
+        // paddingHorizontal: 10,
         alignItems: 'center',
-        width: "80%",
+        width: "100%",
         backgroundColor: getBgColorByVariant(variant),
         borderRadius: 8,
         borderWidth: 1,
@@ -52,7 +59,7 @@ const getStyles = (variant: ButtonVariant) =>
 const getBgColorByVariant = (variant: ButtonVariant) => {
     switch(variant){
         case "primary":
-            return "#2e4566";
+            return "#3b82f6";
         case "secondary":
             return "#d1d5db";
         case "terciary":

@@ -1,5 +1,6 @@
-import { TextInput, View, Text,StyleSheet } from "react-native";
+import { TextInput, View, Text,StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { useState } from "react";
 
 
 export interface CustomInputProps {
@@ -8,17 +9,19 @@ export interface CustomInputProps {
     onChangeText?: (text: string) => void;
     type?: 'default' | 'email-address' | 'numeric' | 'phone-pad' | 'password';
     errorMessage?: string;
+    leftIconName?: string | any;
 }
 
 export default function CustomInput(
     props: CustomInputProps
 ) {
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     return (
         <View style={styles.container}>
             <View style={styles.form_field}>  
                 <MaterialIcons
                     style={{marginRight: 5}}
-                    name={"email"}
+                    name={props.leftIconName}
                     size={20}
                     color={"#00000"}
                 />
@@ -29,15 +32,22 @@ export default function CustomInput(
                     value={props.value}
                     onChangeText={props.onChangeText}
                     keyboardType={props.type === 'password' ? 'default' : props.type}
-                    secureTextEntry={props.type === 'password'}
+                    secureTextEntry={props.type === 'password' && !isPasswordVisible}
                 />
+                
 
-                <Ionicons
-                    style={{marginRight: 5}}
-                    name={"eye-off"}
-                    size={20}
-                    color={"#00000"}
-                />
+                <TouchableOpacity
+                    onPress={() => {
+                        setIsPasswordVisible(!isPasswordVisible);
+                    }}
+                >    
+                    <Ionicons
+                        style={{marginRight: 5}}
+                        name={isPasswordVisible ? "eye" : "eye-off"}
+                        size={20}
+                        color={"#00000"}
+                    />
+                </TouchableOpacity>
             </View>
             <Text style={styles.errorText}>{"Campo requerido"}</Text>
         </View>
@@ -55,6 +65,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderWidth: 1,
         borderColor: '#ccc',
+        backgroundColor: '#fff',
         borderRadius: 5,
         paddingHorizontal: 10,
         paddingVertical: 5,
@@ -65,6 +76,8 @@ const styles = StyleSheet.create({
     input: {
         flex: 1,
         marginLeft: 10,
+        fontSize: 16,
+        color: '#000',
     },
     errorText: {
         color: 'red',

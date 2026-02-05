@@ -40,18 +40,23 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.card}>
         <Text>Inicio de Sesion</Text>
-        <CustomInput 
-            placeholder={"Correo Electronico"}
-            type={"email-address"} />
-        <CustomInput
-            placeholder={"Contraseña"}
-            type={"password"} />
+        <View style={styles.inputWrapper}>
+
+          <CustomInput 
+              placeholder={"Correo Electronico"}
+              type={"email-address"}
+              leftIconName={"mail-outline"} />
+          <CustomInput
+              placeholder={"Contraseña"}
+              type={"password"}
+              leftIconName={"lock-outline"} />
+        </View>
        
 
         <StatusBar style="auto" />
         <View style={styles.buttonsWrapper}>
           <CustomButton 
-              title={'Login'} 
+              title={'Ingresar'} 
               onClick={handleOnLogin} />
           <CustomButton 
               title={'Salir'}
@@ -94,16 +99,24 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#b70808',
   },
   card: {
-    width: "80%",
+    width: "85%",
     height: "80%",
-    borderRadius:15,
-    backgroundColor: '#f3f4f6',
+    borderRadius:50,
+    backgroundColor: '#ffffff',
+  },
+  inputWrapper: {
+    marginTop: 20,
+    width: "100%",
+    height: "30%",
+    alignItems: "center",
+    justifyContent: "space-around",
   },
   buttonsWrapper: {
-    backgroundColor: "#e5e7eb",
     marginTop: 15,
+    width: "100%",
     height: "30%",
     alignItems: "center",
     justifyContent: "space-around",
