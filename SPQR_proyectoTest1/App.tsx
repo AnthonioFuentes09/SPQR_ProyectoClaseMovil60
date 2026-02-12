@@ -7,6 +7,8 @@ import CustomInput from './src/components/CustomInput';
 
 export default function App() {
   const [newTitle, setNewTitle] = useState("Initial Title");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   
   const handleOnClick = () => {
     setNewTitle("Button clicked!");
@@ -44,10 +46,14 @@ export default function App() {
 
           <CustomInput 
               placeholder={"Correo Electronico"}
+              onChangeText={setEmail}
+              isRequired = {true}
               type={"email-address"}
               leftIconName={"mail-outline"} />
           <CustomInput
               placeholder={"Contraseña"}
+              onChangeText={setPassword}
+              isRequired={true}
               type={"password"}
               leftIconName={"lock-outline"} />
         </View>

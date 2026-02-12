@@ -1,4 +1,4 @@
-import { TextInput, View, Text,StyleSheet, TouchableOpacity } from "react-native";
+import { TextInput, View, Text,StyleSheet, TouchableOpacity, KeyboardTypeOptions } from "react-native";
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useState } from "react";
 
@@ -8,14 +8,32 @@ export interface CustomInputProps {
     value?: string;
     onChangeText?: (text: string) => void;
     type?: 'default' | 'email-address' | 'numeric' | 'phone-pad' | 'password';
-    errorMessage?: string;
     leftIconName?: string | any;
+    isRequired? : boolean;
 }
 
 export default function CustomInput(
     props: CustomInputProps
 ) {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [isPasswordField, setIsPasswordField] = useState(props.type === 'password');
+
+    const keyBoardType: KeyboardTypeOptions = 
+        props.type === 'email-address' ? 'email-address' :
+        props.type === 'numeric' ? 'numeric' :
+        props.type === 'phone-pad' ? 'phone-pad' : 'default';
+
+    const getError = ()  => {
+        if(props.type === 'email-address' && !props.value?.includes('@'))
+            return 'Correo invalido'
+        if(props.type === 'password' && props.value  && props.value?.length < 6)
+            return 'La contraseña debe ser más fuerte';
+      
+        return ''
+    }
+
+    const error = getError();
+
     return (
         <View style={styles.container}>
             <View style={styles.form_field}>  
@@ -31,12 +49,12 @@ export default function CustomInput(
                     placeholder={props.placeholder}
                     value={props.value}
                     onChangeText={props.onChangeText}
-                    keyboardType={props.type === 'password' ? 'default' : props.type}
-                    secureTextEntry={props.type === 'password' && !isPasswordVisible}
+                    keyboardType={ keyBoardType}
+                    secureTextEntry={isPasswordField && !isPasswordVisible}
                 />
                 
 
-                <TouchableOpacity
+                { props.type === 'password' && <TouchableOpacity
                     onPress={() => {
                         setIsPasswordVisible(!isPasswordVisible);
                     }}
@@ -47,9 +65,10 @@ export default function CustomInput(
                         size={20}
                         color={"#00000"}
                     />
-                </TouchableOpacity>
+                </TouchableOpacity>}
             </View>
-            <Text style={styles.errorText}>{"Campo requerido"}</Text>
+            { props.isRequired  && error
+            && <Text style={styles.errorText}>{error}</Text>}
         </View>
     );
 }
