@@ -1,0 +1,22 @@
+import { View, Text,StyleSheet } from "react-native";
+
+
+const ProfileScreen = () => {
+
+    return (
+       <View style={styles.container}>
+            <Text>Bienvenido a la pantalla del Perfil</Text>
+        </View>
+    );
+}
+
+export default ProfileScreen;
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});
