@@ -9,29 +9,15 @@ import CustomLenguagesBtn from "../components/CustomLenguagesBtn";
 
 
 export default function LoginScreen({navigation}: any) {
-  const [newTitle, setNewTitle] = useState("Initial Title");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [baseName, setBaseName] = useState("");
+  // const [baseName, setBaseName] = useState("");
 
   const {login, isAllowed} = useAuth();
-  const alertType: AlertType = 'default' ;
+  // const alertType: AlertType = 'default' ;
   
-  
-  const handleOnClick = () => {
-    setNewTitle("Button clicked!");
-    alert("Button was clicked!");
-  }
 
-  const unHandleOnClick = () => {
-    setNewTitle("Button unclicked!");
-    alert("Button was unclicked!");
-  }
 
-  const resetHandleOnClick = () => {
-    setNewTitle("Initial Title");
-    alert("Button was reset!");
-  }
 
   const handleOnLogin = () => {
     // navigation.navigate("Home", {email: email});
@@ -52,7 +38,7 @@ export default function LoginScreen({navigation}: any) {
               style: 'default' 
             },
             {
-              text: "chingaTumare",
+              text: "Cancelar",
               style: 'destructive'
             }
           ]

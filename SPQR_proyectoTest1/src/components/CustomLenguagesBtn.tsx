@@ -9,14 +9,14 @@ export default function CustomLenguagesBtn() {
     return (
         <View style={style.floatBtn}>
             <View style={{flexDirection: 'column', gap: 10}}>
-                <TouchableOpacity style={getStylesBtn('es').container}>
-                    <MaterialIcons  name="language" size={24} color="white" onPress={() => changeLanguage('es')} />
+                <TouchableOpacity style={getStylesBtn('es').container} onPress={() => changeLanguage('es')}>
+                    <MaterialIcons  name="language" size={24} color="white" />
                 </TouchableOpacity>
-                <TouchableOpacity style={getStylesBtn('en').container}>
-                    <MaterialIcons name="language" size={24} color="white" onPress={() => changeLanguage('en')} />
+                <TouchableOpacity style={getStylesBtn('en').container} onPress={() => changeLanguage('en')}>
+                    <MaterialIcons name="language" size={24} color="white" />
                 </TouchableOpacity>
-                <TouchableOpacity style={getStylesBtn('de').container}>
-                    <MaterialIcons name="language" size={24} color="white" onPress={() => changeLanguage('de')}/>
+                <TouchableOpacity style={getStylesBtn('de').container} onPress={() => changeLanguage('de')}>
+                    <MaterialIcons name="language" size={24} color="white" />
                 </TouchableOpacity>
             </View>
         </View>
