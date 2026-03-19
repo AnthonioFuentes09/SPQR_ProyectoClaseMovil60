@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import SettignsScreen from "../screens/SettingsScreen";
+import MapScreen from "../screens/MapScreen";
 import { View, Text } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -9,6 +10,7 @@ export type TabsParamList = {
     Home: undefined;
     Profile: undefined;
     Settings: undefined;
+    Map: undefined;
     AboutYou: undefined;
 }
 
@@ -51,7 +53,17 @@ export default function TabsNavigator() {
                     }
                 }
             />
-           
+            <Tab.Screen
+                name="Map"
+                component={MapScreen}
+                options={
+                    {
+                        headerShown: true,
+                        headerTitle: "Mapa",
+                        tabBarIcon: () => <MaterialIcons name={"map"} size={20} color={"#00000"} />,
+                    }
+                }
+            />
         </Tab.Navigator>
     );
 }
